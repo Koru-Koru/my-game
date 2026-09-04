@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Anniv mini game ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         FLOATING HEARTS
+    ================================== -->
+
+    <div class="floating-hearts">
+
+        <span>❤️</span>
+        <span>💕</span>
+        <span>💗</span>
+        <span>💖</span>
+        <span>💘</span>
+        <span>💞</span>
+
+    </div>
+
+
+
+    <!-- =================================
+         START SCREEN
+    ================================== -->
+
+    <section
+        class="screen start-screen"
+        id="startScreen"
+    >
+
+        <div class="big-heart">
+            💖
+        </div>
+
+
+        <h1>
+            Welcome to my mini game lablab
+        </h1>
+
+
+        <p class="intro-text">
+            A little quiz made especially
+            for my favorite person. 🥰
+        </p>
+
+
+        <p class="small-text">
+            10 questions • 4 choices •
+            Lots of love ❤️
+        </p>
+
+
+        <button id="startButton">
+            Start Game 💕
+        </button>
+
+    </section>
+
+
+
+    <!-- =================================
+         QUIZ SCREEN
+    ================================== -->
+
+    <section
+        class="screen quiz-screen"
+        id="quizScreen"
+    >
+
+        <div class="quiz-card">
+
+
+            <!-- TOP INFORMATION -->
+
+            <div class="top-info">
+
+                <span id="questionNumber">
+                    Question 1/10
+                </span>
+
+
+                <span class="score-display">
+                    ❤️
+                    <span id="score">0</span>
+                </span>
+
+            </div>
+
+
+
+            <!-- PROGRESS BAR -->
+
+            <div class="progress-container">
+
+                <div id="progressBar"></div>
+
+            </div>
+
+
+
+            <!-- QUESTION IMAGE -->
+
+            <div class="question-image-container">
+
+                <img
+                    id="questionImage"
+                    src=""
+                    alt="Question Image"
+                >
+
+            </div>
+
+
+
+            <!-- QUESTION -->
+
+            <h2 id="question">
+                Question goes here
+            </h2>
+
+
+
+            <!-- ANSWERS -->
+
+            <div
+                class="answers"
+                id="answers"
+            >
+
+                <button
+                    class="answer-button"
+                    data-index="0"
+                >
+                    Choice 1
+                </button>
+
+
+                <button
+                    class="answer-button"
+                    data-index="1"
+                >
+                    Choice 2
+                </button>
+
+
+                <button
+                    class="answer-button"
+                    data-index="2"
+                >
+                    Choice 3
+                </button>
+
+
+                <button
+                    class="answer-button"
+                    data-index="3"
+                >
+                    Choice 4
+                </button>
+
+            </div>
+
+
+
+            <!-- FEEDBACK -->
+
+            <p id="feedback"></p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         RESULT SCREEN
+    ================================== -->
+
+    <section
+        class="screen result-screen"
+        id="resultScreen"
+    >
+
+        <div
+            class="result-heart"
+            id="resultHeart"
+        >
+            💖
+        </div>
+
+
+        <h1 id="resultTitle">
+            You Finished!
+        </h1>
+
+
+        <p id="resultMessage">
+            You did amazing!
+        </p>
+
+
+        <div class="final-score">
+
+            <span id="finalScore">
+                0
+            </span>
+
+            <span>/10</span>
+
+        </div>
+
+
+        <button id="playAgainButton">
+            Play Again 💕
+        </button>
+
+    </section>
+
+
+
+    <!-- =================================
+         AUDIO
+    ================================== -->
+
+    <audio
+        id="backgroundMusic"
+        loop
+    >
+
+        <source
+            src="audio/background.mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+
+    <audio id="correctSound">
+
+        <source
+            src="audio/correct.mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+
+    <audio id="wrongSound">
+
+        <source
+            src="audio/wrong.mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
