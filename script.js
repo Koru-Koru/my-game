@@ -11,74 +11,44 @@ const quizScreen =
 const resultScreen =
     document.getElementById("resultScreen");
 
-
 const startButton =
     document.getElementById("startButton");
 
 const playAgainButton =
-    document.getElementById(
-        "playAgainButton"
-    );
-
+    document.getElementById("playAgainButton");
 
 const questionNumber =
-    document.getElementById(
-        "questionNumber"
-    );
+    document.getElementById("questionNumber");
 
 const question =
-    document.getElementById(
-        "question"
-    );
+    document.getElementById("question");
 
 const questionImage =
-    document.getElementById(
-        "questionImage"
-    );
-
+    document.getElementById("questionImage");
 
 const scoreDisplay =
-    document.getElementById(
-        "score"
-    );
+    document.getElementById("score");
 
 const progressBar =
-    document.getElementById(
-        "progressBar"
-    );
-
+    document.getElementById("progressBar");
 
 const feedback =
-    document.getElementById(
-        "feedback"
-    );
-
+    document.getElementById("feedback");
 
 const answerButtons =
-    document.querySelectorAll(
-        ".answer-button"
-    );
-
+    document.querySelectorAll(".answer-button");
 
 const finalScore =
-    document.getElementById(
-        "finalScore"
-    );
+    document.getElementById("finalScore");
 
 const resultTitle =
-    document.getElementById(
-        "resultTitle"
-    );
+    document.getElementById("resultTitle");
 
 const resultMessage =
-    document.getElementById(
-        "resultMessage"
-    );
+    document.getElementById("resultMessage");
 
 const resultHeart =
-    document.getElementById(
-        "resultHeart"
-    );
+    document.getElementById("resultHeart");
 
 
 /* =================================
@@ -86,20 +56,27 @@ const resultHeart =
 ================================= */
 
 const backgroundMusic =
-    document.getElementById(
-        "backgroundMusic"
-    );
+    document.getElementById("backgroundMusic");
 
 const correctSound =
-    document.getElementById(
-        "correctSound"
-    );
+    document.getElementById("correctSound");
 
 const wrongSound =
-    document.getElementById(
-        "wrongSound"
-    );
+    document.getElementById("wrongSound");
 
+/* Preload audio to reduce delay */
+
+backgroundMusic.preload = "auto";
+correctSound.preload = "auto";
+wrongSound.preload = "auto";
+
+correctSound.load();
+wrongSound.load();
+
+
+/* =================================
+   QUESTIONS
+================================= */
 
 const questions = [
 
@@ -111,20 +88,14 @@ const questions = [
             "images/question1.jpg",
 
         answers: [
-
             "Your smile",
-
             "Your personality",
-
             "Your kindness",
-
             "All of the above? 🤔"
-
         ],
 
         correct: 3
     },
-
 
     {
         question:
@@ -134,20 +105,14 @@ const questions = [
             "images/question2.jpg",
 
         answers: [
-
             "Japan",
-
             "Naboo",
-
             "malls",
-
             "Anywhere with you"
-
         ],
 
         correct: 3
     },
-
 
     {
         question:
@@ -157,20 +122,14 @@ const questions = [
             "images/question3.jpg",
 
         answers: [
-
             "Kisses",
-
             "warm hugs from you",
-
             "holding my hands",
-
             "Spending time with you"
-
         ],
 
         correct: 3
     },
-
 
     {
         question:
@@ -180,20 +139,14 @@ const questions = [
             "images/question4.jpg",
 
         answers: [
-
             "Me",
-
             "You",
-
             "Both of us",
-
             "Neither of us"
-
         ],
 
         correct: 0
     },
-
 
     {
         question:
@@ -203,20 +156,14 @@ const questions = [
             "images/question5.jpg",
 
         answers: [
-
             "The Japan (50/50 kasi may kaso)",
-
             "a",
-
             "The beach",
-
             "Anywhere with you"
-
         ],
 
         correct: 3
     },
-
 
     {
         question:
@@ -226,20 +173,14 @@ const questions = [
             "images/question6.jpg",
 
         answers: [
-
             "Talking to you",
-
             "Sleeping",
-
             "Eating",
-
             "Playing games"
-
         ],
 
         correct: 0
     },
-
 
     {
         question:
@@ -249,20 +190,14 @@ const questions = [
             "images/question7.jpg",
 
         answers: [
-
             "Baby",
-
             "Love",
-
             "Princess",
-
             "All of these"
-
         ],
 
         correct: 3
     },
-
 
     {
         question:
@@ -272,20 +207,14 @@ const questions = [
             "images/question8.jpg",
 
         answers: [
-
             "A million pesos",
-
             "A new phone",
-
             "A perfect day with you",
-
             "A luxury car"
-
         ],
 
         correct: 2
     },
-
 
     {
         question:
@@ -295,20 +224,14 @@ const questions = [
             "images/question9.jpg",
 
         answers: [
-
             "Our first conversation",
-
             "Our funniest moment",
-
             "Our first date",
-
             "Every moment with you"
-
         ],
 
         correct: 3
     },
-
 
     {
         question:
@@ -318,15 +241,10 @@ const questions = [
             "images/question10.jpg",
 
         answers: [
-
             "Myself",
-
             "My friends",
-
             "My girlfriend",
-
             "Pizza"
-
         ],
 
         correct: 2
@@ -340,7 +258,6 @@ const questions = [
 ================================= */
 
 let currentQuestion = 0;
-
 let score = 0;
 
 
@@ -352,44 +269,28 @@ startButton.addEventListener(
     "click",
     function () {
 
-        startScreen.style.display =
-            "none";
+        startScreen.style.display = "none";
 
-        quizScreen.style.display =
-            "flex";
+        quizScreen.style.display = "flex";
 
-        resultScreen.style.display =
-            "none";
-
+        resultScreen.style.display = "none";
 
         currentQuestion = 0;
 
         score = 0;
 
+        scoreDisplay.textContent = score;
 
-        scoreDisplay.textContent =
-            score;
-
-
-        /*
-            Start music.
-
-            Browsers allow this because
-            the music starts after the
-            user clicks the button.
-        */
+        /* Start background music */
 
         backgroundMusic.volume = 0.4;
 
         backgroundMusic.play()
             .catch(function () {
-
                 console.log(
                     "Music could not start."
                 );
-
             });
-
 
         showQuestion();
 
@@ -406,31 +307,14 @@ function showQuestion() {
     const current =
         questions[currentQuestion];
 
-
-    /* Question number */
-
     questionNumber.textContent =
-        `Question ${
-            currentQuestion + 1
-        }/10`;
-
-
-    /* Question text */
+        `Question ${currentQuestion + 1}/10`;
 
     question.textContent =
         current.question;
 
-
-    /* Question image */
-
     questionImage.src =
         current.image;
-
-
-    /*
-        If image cannot be found,
-        show a placeholder.
-    */
 
     questionImage.onerror =
         function () {
@@ -440,25 +324,10 @@ function showQuestion() {
 
         };
 
-
-    /* Progress */
-
     progressBar.style.width =
-        `${
-            (
-                (currentQuestion + 1)
-                /
-                questions.length
-            ) * 100
-        }%`;
-
-
-    /* Clear feedback */
+        `${((currentQuestion + 1) / questions.length) * 100}%`;
 
     feedback.textContent = "";
-
-
-    /* Set answers */
 
     answerButtons.forEach(
         function (button, index) {
@@ -466,16 +335,11 @@ function showQuestion() {
             button.textContent =
                 current.answers[index];
 
-            button.disabled =
-                false;
+            button.disabled = false;
 
-            button.classList.remove(
-                "correct"
-            );
+            button.classList.remove("correct");
 
-            button.classList.remove(
-                "wrong"
-            );
+            button.classList.remove("wrong");
 
         }
     );
@@ -507,28 +371,18 @@ answerButtons.forEach(
    CHECK ANSWER
 ================================= */
 
-function checkAnswer(
-    selectedAnswer
-) {
+function checkAnswer(selectedAnswer) {
 
     const current =
         questions[currentQuestion];
 
-
     const correctAnswer =
         current.correct;
-
-
-    /*
-        Disable all answers
-        so she cannot click twice.
-    */
 
     answerButtons.forEach(
         function (button) {
 
-            button.disabled =
-                true;
+            button.disabled = true;
 
         }
     );
@@ -536,43 +390,32 @@ function checkAnswer(
 
     /* =================================
        CORRECT
-    ================================== */
+    ================================= */
 
-    if (
-        selectedAnswer ===
-        correctAnswer
-    ) {
+    if (selectedAnswer === correctAnswer) {
 
         score++;
-
 
         scoreDisplay.textContent =
             score;
 
+        answerButtons[selectedAnswer]
+            .classList.add("correct");
 
-        answerButtons[
-            selectedAnswer
-        ].classList.add(
-            "correct"
-        );
+        /* Play correct sound immediately */
 
+        correctSound.pause();
 
-        correctSound.currentTime =
-            0;
+        correctSound.currentTime = 0;
 
-        correctSound.volume =
-            0.7;
-
+        correctSound.volume = 0.7;
 
         correctSound.play()
             .catch(function () {
-
                 console.log(
                     "Correct sound unavailable."
                 );
-
             });
-
 
         feedback.textContent =
             "Correct! You know me so well! 🥰❤️";
@@ -582,40 +425,30 @@ function checkAnswer(
 
     /* =================================
        WRONG
-    ================================== */
+    ================================= */
 
     else {
 
-        answerButtons[
-            selectedAnswer
-        ].classList.add(
-            "wrong"
-        );
+        answerButtons[selectedAnswer]
+            .classList.add("wrong");
 
+        answerButtons[correctAnswer]
+            .classList.add("correct");
 
-        answerButtons[
-            correctAnswer
-        ].classList.add(
-            "correct"
-        );
+        /* Play wrong sound immediately */
 
+        wrongSound.pause();
 
-        wrongSound.currentTime =
-            0;
+        wrongSound.currentTime = 0;
 
-        wrongSound.volume =
-            0.5;
-
+        wrongSound.volume = 0.5;
 
         wrongSound.play()
             .catch(function () {
-
                 console.log(
                     "Wrong sound unavailable."
                 );
-
             });
-
 
         feedback.textContent =
             "Aww, that's okay! I still love you. 💕";
@@ -632,10 +465,8 @@ function checkAnswer(
 
             currentQuestion++;
 
-
             if (
-                currentQuestion
-                <
+                currentQuestion <
                 questions.length
             ) {
 
@@ -650,7 +481,6 @@ function checkAnswer(
             }
 
         },
-
         1300
     );
 
@@ -669,24 +499,19 @@ function showResults() {
     resultScreen.style.display =
         "flex";
 
-
     finalScore.textContent =
         score;
 
 
-    /* =================================
-       PERFECT SCORE
-    ================================== */
+    /* PERFECT SCORE */
 
     if (score === 10) {
 
         resultHeart.textContent =
             "💖";
 
-
         resultTitle.textContent =
             "PERFECT! 🥰";
-
 
         resultMessage.textContent =
             "You know me better than anyone! You're definitely my favorite person. ❤️";
@@ -694,19 +519,15 @@ function showResults() {
     }
 
 
-    /* =================================
-       7 - 9
-    ================================== */
+    /* 7 - 9 */
 
     else if (score >= 7) {
 
         resultHeart.textContent =
             "💕";
 
-
         resultTitle.textContent =
             "Amazing! 💕";
-
 
         resultMessage.textContent =
             "You really know me well! I think you deserve a big hug. 🥰";
@@ -714,19 +535,15 @@ function showResults() {
     }
 
 
-    /* =================================
-       5 - 6
-    ================================== */
+    /* 5 - 6 */
 
     else if (score >= 5) {
 
         resultHeart.textContent =
             "💗";
 
-
         resultTitle.textContent =
             "Not Bad! 😘";
-
 
         resultMessage.textContent =
             "Looks like we need to spend more time together! ❤️";
@@ -734,19 +551,15 @@ function showResults() {
     }
 
 
-    /* =================================
-       0 - 4
-    ================================== */
+    /* 0 - 4 */
 
     else {
 
         resultHeart.textContent =
             "🥺";
 
-
         resultTitle.textContent =
             "Aww... 😭";
-
 
         resultMessage.textContent =
             "I guess we need a lot more dates together! Good thing I love spending time with you. ❤️";
@@ -770,15 +583,12 @@ playAgainButton.addEventListener(
         quizScreen.style.display =
             "flex";
 
-
         currentQuestion = 0;
 
         score = 0;
 
-
         scoreDisplay.textContent =
             score;
-
 
         showQuestion();
 
